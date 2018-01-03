@@ -1,5 +1,7 @@
 package com.example.springmv.controller;
 
+import com.tiku.spring.bean.ExcmpleVO;
+import com.tiku.spring.bean.MultChoiceVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,4 +25,20 @@ public class MyController {
     public String returnString() {
         return "hello return string 这是中文，并没有乱码";
     }
+
+    //目前来看没有乱码
+    @RequestMapping(value = "/form_action")
+    public String dofrom(ExcmpleVO vo){
+        System.out.println(vo);
+        return "success";    //返回Views文件夹下的success.jsp页面
+    }
+
+    //目前来看没有乱码
+    @RequestMapping(value = "/form_action1")
+    public String dofromd(MultChoiceVO vo){
+        System.out.println(vo);
+        return "success";    //返回Views文件夹下的success.jsp页面
+    }
+
+
 }

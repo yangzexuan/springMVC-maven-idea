@@ -12,5 +12,12 @@
 </head>
 <body>
 <h2>success</h2>
+
+<form action="form_action" method="get">
+    <p>First name: <input type="text" name="fname" /></p>
+    <p>Last name: <input type="text" name="lname" /></p>
+    <input type="submit" value="Submit" />
+</form>
+
 </body>
 </html>
