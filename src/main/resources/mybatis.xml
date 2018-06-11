@@ -5,7 +5,7 @@
 <configuration>
     <properties resource="mybatis.properties"></properties>
 
-    <environments default="development">
+    <environments default="mysql">
         <environment id="mysql" >
             <!-- 配置 MyBatis 的事务管理器 -->
             <transactionManager type="JDBC"/>
@@ -23,7 +23,7 @@
                 <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
                 <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:kaiyuan"/>
                 <property name="username" value="root"/>
-                <property name="password" value="1230"/>
+                <property name="password" value="root"/>
             </dataSource>
         </environment>
 
@@ -50,7 +50,7 @@
     </environments>
 
     <mappers>
-
+        <mapper resource="com\com\dome\mybatis\mock\UserMapper.xml" ></mapper>
     </mappers>
 
 </configuration>

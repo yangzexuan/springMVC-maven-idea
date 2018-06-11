@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定映射器的命名空间 -->
+<mapper namespace="com.com.dome.mybatis.mock.UserMapper">
+
+    <!-- 映射 SQL 语句 -->
+    <select id="selectUser"   resultType="map">
+
+		select * from sm_user where cuserid  = #{id}
+	</select>
+
+</mapper>
