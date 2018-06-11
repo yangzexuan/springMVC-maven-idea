@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="mybatis.properties"></properties>
+
+    <environments default="development">
+        <environment id="mysql" >
+            <!-- 配置 MyBatis 的事务管理器 -->
+            <transactionManager type="JDBC"/>
+            <!-- 配置 MyBatis 使用的数据源 -->
+            <dataSource type="POOLED" >
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///mybatis?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+        <environment id="orcl" >
+            <transactionManager type="JDBC" ></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+                <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:kaiyuan"/>
+                <property name="username" value="root"/>
+                <property name="password" value="1230"/>
+            </dataSource>
+        </environment>
+
+        <environment id="mysqlpro" >
+            <!-- 配置 MyBatis 的事务管理器 -->
+            <transactionManager type="JDBC"/>
+            <!-- 配置 MyBatis 使用的数据源 -->
+            <dataSource type="POOLED" >
+                <property name="driver" value="{jdbc.mysql.driver}"/>
+                <property name="url" value="{jdbc.mysql.url}"/>
+                <property name="username" value="{jdbc.mysql.username}"/>
+                <property name="password" value="{jdbc.mysql.password}"/>
+            </dataSource>
+        </environment>
+        <environment id="orclpro" >
+            <transactionManager type="JDBC" ></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="{jdbc.orcl.driver}"/>
+                <property name="url" value="{jdbc.orcl.url}"/>
+                <property name="username" value="{jdbc.orcl.username}"/>
+                <property name="password" value="{jdbc.orcl.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+
+    </mappers>
+
+</configuration>
