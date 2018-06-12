@@ -50,7 +50,11 @@
     </environments>
 
     <mappers>
-        <mapper resource="com\com\dome\mybatis\mock\UserMapper.xml" ></mapper>
+        <!--<mapper resource="com\com\dome\mybatis\mock\UserMapper.xml" ></mapper>-->
+        <!--<mapper class="com.com.dome.mybatis.mock.MyUserMapper"></mapper>-->
+
+        <!-- 按包进行检索-->
+        <package name="com.com.dome.mybatis.mock"></package>
     </mappers>
 
 </configuration>
