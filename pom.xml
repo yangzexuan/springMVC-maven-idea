@@ -10,6 +10,7 @@
 
   <properties>
     <springframework>4.3.6.RELEASE</springframework>
+    <shir-version>>1.2.1</shir-version>
   </properties>
   <!--项目依赖 -->
   <dependencies>
@@ -134,6 +135,28 @@
       <version>0.9.5.2</version>
     </dependency>
 
+    <!-- shiro  maven开始 -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-ehcache</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+    <!-- shiro  maven开始 -->
   </dependencies>
   <build>
     <finalName>dome</finalName>
