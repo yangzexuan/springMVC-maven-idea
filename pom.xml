@@ -96,6 +96,17 @@
       <artifactId>spring-webmvc</artifactId>
       <version>4.3.1.RELEASE</version>
     </dependency>
+
+
+	<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator 
+	
+	model中 数据校验 -->
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>6.0.7.Final</version>
+</dependency>
+
     <!--spring mvc 相关包 结束-->
     <!--其他需要的包-->
     <dependency>
