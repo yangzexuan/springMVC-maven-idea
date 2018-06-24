@@ -7,6 +7,8 @@
 <body>
 <h2>Hello World!</h2>
 
+<li><a href="/shiro/shiro_login.jsp">shiro登录</a></li>
+
 <form action="form_action" method="get">
     <p>First name: <input type="text" name="fname" /></p>
     <p>Last name: <input type="text" name="lname" /></p>
