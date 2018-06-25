@@ -1,11 +1,15 @@
 package com.com.dome.mybatis.mock;
 
 
+import java.util.List;
+
 public class UserVO {
     private int pk;
     private String username;
     private String cuserid;
     private String usercode;
+
+    private List<RoleVO> roles;
 
     public UserVO(int pk, String username, String cuserid, String usercode) {
         this.pk = pk;
@@ -49,6 +53,14 @@ public class UserVO {
         this.usercode = usercode;
     }
 
+    public List<RoleVO> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleVO> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "UserVO{" +
@@ -56,8 +68,7 @@ public class UserVO {
                 ", username='" + username + '\'' +
                 ", cuserid='" + cuserid + '\'' +
                 ", usercode='" + usercode + '\'' +
+                ", roles=" + roles +
                 '}';
     }
-
-
 }

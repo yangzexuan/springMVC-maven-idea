@@ -1,0 +1,15 @@
+CREATE TABLE `mybatis`.`role` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `role` VARCHAR(45) NULL,
+  `userid` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+
+CREATE TABLE `mybatis`.`user` (
+  `pk` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NULL,
+  `cuserid` VARCHAR(45) NULL,
+  `usercode` VARCHAR(45) NULL,
+  PRIMARY KEY (`pk`),
+  UNIQUE INDEX `pk_UNIQUE` (`pk` ASC));

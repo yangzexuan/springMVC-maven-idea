@@ -2,16 +2,18 @@ package com.example.springmv.controller;
 
 import com.tiku.spring.bean.ExcmpleVO;
 import com.tiku.spring.bean.MultChoiceVO;
+import com.tiku.spring.bean.OptionItemVO;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @SessionAttributes注解只能在类上使用，不能在方法上使用.
  * RequestMapping查询的方法执行后
  * 会遍历ModelAndView中的Map中将键（value）、值类型（types）相符合的key-value 放入到session中
  */
-@SessionAttributes(value={“user1”, “user2”}, types={MultChoiceVO.class}) 
+@SessionAttributes(value={"user1", "user2"}, types={MultChoiceVO.class})
 @Controller
 @RequestMapping(value = "/dome/SessionAttributes")
 public class SessionAttributesController {
@@ -76,7 +78,7 @@ public class SessionAttributesController {
     }
 
    
-   @SessionAttributes
+
    @RequestMapping(value = "/ServletAPI   " ) 
    public String sessionAttributes(HttpSession session) {
         return "success";    //返回Views文件夹下的success.jsp页面

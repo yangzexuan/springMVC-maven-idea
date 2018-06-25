@@ -8,6 +8,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class AppMybatisDome {
@@ -16,12 +18,17 @@ public class AppMybatisDome {
 
     public static void main(String[] args) throws Exception {
 //        doMybatisByMapperXML();
-//        doMybatisByMapperJava();
-        doMybatisBySpring();
+        doMybatisByMapperJava();
+//        doMybatisBySpring();
 
 
     }
 
+    /**
+     *  说明：基于注解的动态sql较为难开发，建议使用配置文件设置
+     *  在spring 开发下，mapper接口必须有并且与 配置文件同名
+     * @throws IOException
+     */
     private static void doMybatisByMapperJava() throws IOException {
         System.out.println("使用mapper接口的代理对象查询");
 //        1、读取配置文件
@@ -37,16 +44,53 @@ public class AppMybatisDome {
         //  使用接口
         MyUserMapper mapper = session.getMapper(MyUserMapper.class);
 
-        Map dd = mapper.queryByCuserid("dd");
-
-        System.out.println(dd);
-
         UserMapper mapper1 = session.getMapper(UserMapper.class);
-        dd = mapper1.selectUser("cc");
+
+        UserVO vo = new UserVO();
+        vo.setCuserid("cc");
+        vo.setUsercode("ccCdoe");
+        vo.setUsername("张三");
+//        int userinsert = mapper1.userinsert(vo);
+//        System.out.println(userinsert);
+        System.out.println(vo);
+        List<RoleVO> list  = new ArrayList<>();
+        RoleVO rvo = null;
+        for (int i =0;i<4;i++){
+            rvo = new RoleVO();
+            rvo.setRolename("role姓名"+i);
+            rvo.setUserid(vo.getPk());
+            list.add(rvo);
+//                    mapper1.insertRole(rvo);
+        }
+
+//        Object o1 = mapper1.insertBatchRole(list);
+//        System.out.println(o1);
+        for (RoleVO roleVO: list             ) {
+            System.out.println(roleVO);
+        }
+
+        List<UserVO> userVOS = mapper1.selectUserAndRole(53);
+        System.out.println(userVOS);
+
+
+        vo = new UserVO();
+        vo.setCuserid("cc2");
+        vo.setUsercode("ccCdoe2");
+        vo.setUsername("张三2");
+        Object o = mapper.insertVO(vo);
+        System.out.println(o);
+        System.out.println(vo);
+
+
+        Object dd = mapper.queryByCuserid("cc");
 
         System.out.println(dd);
 
 
+        dd = mapper1.selectUser("cc");
+        System.out.println(dd);
+
+        session.commit();
 //4. 关闭 Session
         session.close();
 

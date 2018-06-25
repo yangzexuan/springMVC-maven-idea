@@ -1,5 +1,6 @@
 package com.com.dome.mybatis.mock;
 
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,16 +13,20 @@ public class MybatisService {
     @Autowired
     private MyUserMapper myUserMapper;
 
+
     @Transactional
     public void query(){
         String cuserid = "cc";
 
-        Map map = this.userMapper.selectUser(cuserid);
+        Object map = this.userMapper.selectUser(cuserid);
         System.out.println(map);
 
         System.out.println("处理");
-        Map map1 = this.myUserMapper.queryByCuserid(cuserid);
+        Object map1 = this.myUserMapper.queryByCuserid(cuserid);
         System.out.println(map1);
+
+
+
 
 
     }

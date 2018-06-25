@@ -123,7 +123,7 @@
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
-      <version>3.1.1</version>
+      <version>3.3.1</version>
     </dependency>
 
     <dependency>
@@ -191,6 +191,14 @@
         <artifactId>jetty-maven-plugin</artifactId>
         <version>9.3.10.v20160621</version>
       </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>7</source>
+                <target>7</target>
+            </configuration>
+        </plugin>
     </plugins>
   </build>
 </project>

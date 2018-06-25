@@ -1,10 +1,11 @@
-package com.example.springmv.controller;
+package com.com.dome.springMVC.controller;
 
 import com.tiku.spring.bean.ExcmpleVO;
 import com.tiku.spring.bean.MultChoiceVO;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by yangzxa on 2017/12/6.
@@ -19,7 +20,7 @@ public class MyController {
     }
 
 //请求必须包含名为 param1 和param2 的两个请求参数，且 param1 参数的值必须为 value1
-    @RequestMapping(value = "/hello" ,params = {"param1=value1", "param2"} ,method = RequestMethod.POST,params = "userid")   
+    @RequestMapping(value = "/hello" ,params = {"param1=value1", "param2"} ,method = RequestMethod.POST)
     public String returnSuccess1() {
         return "success";    //返回Views文件夹下的success.jsp页面
     }
@@ -32,7 +33,7 @@ public class MyController {
 
      // @RequestParam  绑定请求参数值
     @RequestMapping(value = "/RequestParam " )   
-    public String requestParam(@RequestParam ( value ="id" ,required = false) String id) {
+    public String requestParam(@RequestParam( value ="id" ,required = false) String id) {
         return "success";    //返回Views文件夹下的success.jsp页面
     }
 
@@ -66,7 +67,7 @@ public class MyController {
     }
 
    
-   @SessionAttributes
+
    @RequestMapping(value = "/ServletAPI   " ) 
    public String sessionAttributes(HttpSession session) {
         return "success";    //返回Views文件夹下的success.jsp页面
