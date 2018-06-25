@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:tx="http://www.springframework.org/schema/mvc"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!-- 我们可以在其中添加我们所需要配置的bean，也可以添加相应的数据库连接和事务处理等等，方便后续拓展
+           -->
+    <!--使用注解 -->
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="com.com.dome.shiro.dome.service" />
+
+
+
+
+    <!-- 配置管理缓存的 CacheManager -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <!-- 配置 EhCache 的配置文件 -->
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+    </bean>
+
+    <bean id="realm" class="com.com.dome.shiro.dome.realm.DomeAuthenticatingRealm" init-method="initCredentialsMatcher"></bean>
+
+
+    <!-- 配置 Shiro 的 SecurityManage Bean. -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="cacheManager" ref="cacheManager" />
+        <property name="realm" ref="realm" />
+    </bean>
+
+    <!-- 配置可以自动调用 Spring 中 Shiro 实体对象的生命周期方法的 BeanPostProcessor -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+    <!--
+		以下两个 bean 可以使 Shiro 的注解起作用. 前提是必须配置 LifecycleBeanPostProcessor
+	-->
+    <bean
+            class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+            depends-on="lifecycleBeanPostProcessor" />
+    <bean
+            class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>
+
+
+
+    <!-- 配置 ShiroFilter！ -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/shiro/login.jsp"/>
+        <property name="unauthorizedUrl" value="/shiro/unauthorized.jsp"/>
+
+        <!-- 配置 Shiro 可以拦截的资源, 支持通配符 -->
+        <property name="filterChainDefinitions">
+            <value>
+                /shiro/login.jsp = anon
+                /shiro/unauthorized.jsp = anon
+                /shiro/shirologin = anon
+                /shiro/role/user = roles[user]
+                /shiro/role/admin = roles[admin]
+                /shiro/logout = logout
+                /shiro/** = authc
+            </value>
+        </property>
+        <property name="filters">
+            <map>
+                <entry key="logout" value-ref="logout" />
+            </map>
+
+        </property>
+    </bean>
+
+    <!-- 配置 自定义退出过滤1器-->
+    <bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
+        <!--  重新设置自定退出重定向地址 -->
+        <property name="redirectUrl" value="/shiro/login.jsp"/>
+    </bean>
+
+
+</beans>
