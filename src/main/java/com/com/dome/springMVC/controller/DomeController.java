@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 @RequestMapping(value = "/dome")
-public class MyController {
+public class DomeController {
 
     @RequestMapping(value = "/hello" )    //实际访问的url地址
     public String returnSuccess() {
@@ -32,19 +32,19 @@ public class MyController {
     }
 
      // @RequestParam  绑定请求参数值
-    @RequestMapping(value = "/RequestParam " )   
+    @RequestMapping(value = "/RequestParam" )
     public String requestParam(@RequestParam( value ="id" ,required = false) String id) {
         return "success";    //返回Views文件夹下的success.jsp页面
     }
 
     // @RequestHeader   绑定请求参数值
-    @RequestMapping(value = "/RequestHeader  " )   
+    @RequestMapping(value = "/RequestHeader" )
     public String requestHeader(@RequestHeader  ( "Accept-Encoding") String encoding) {
         return "success";    //返回Views文件夹下的success.jsp页面
     }
 
     // @CookieValue 绑定请求中的 Cookie 值
-    @RequestMapping(value = "/CookieValue   " )   
+    @RequestMapping(value = "/CookieValue" )
     public String cookieValue(@CookieValue   ( value ="sessionid" ,required = false) String sessionid) {
         return "success";    //返回Views文件夹下的success.jsp页面
     }
@@ -61,17 +61,14 @@ public class MyController {
         Reader
         Writer
       */
-    @RequestMapping(value = "/ServletAPI   " )   
+    @RequestMapping(value = "/ServletAPI" )
     public String servletAPI(HttpSession session) {
+
         return "success";    //返回Views文件夹下的success.jsp页面
+    }
+
     }
 
    
 
-   @RequestMapping(value = "/ServletAPI   " ) 
-   public String sessionAttributes(HttpSession session) {
-        return "success";    //返回Views文件夹下的success.jsp页面
-    }
 
-
-}
